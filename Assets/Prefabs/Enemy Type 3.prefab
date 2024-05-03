@@ -106,7 +106,7 @@ MonoBehaviour:
   IsAttacking: 0
   Target: {fileID: 0}
   _damage: 1
-  _straightMove: {fileID: 1678337469537319734}
+  StraightMove: {fileID: 1678337469537319734}
 --- !u!114 &4969355136799979253
 MonoBehaviour:
   m_ObjectHideFlags: 0

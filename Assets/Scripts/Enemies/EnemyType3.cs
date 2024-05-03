@@ -9,7 +9,7 @@ public class EnemyType3 : Enemy
     [SerializeField, Min(0)] int _damage = 1;
 
     [Space, Header("States")]
-    [SerializeField] StraightMoveState _straightMove;
+    public StraightMoveState StraightMove;
 
     new void Start()
     {
@@ -30,7 +30,7 @@ public class EnemyType3 : Enemy
 
     protected override void SelectState()
     {
-        SetState(_straightMove);
+        SetState(StraightMove);
     }
 
     void OnCollisionEnter2D(Collision2D other)

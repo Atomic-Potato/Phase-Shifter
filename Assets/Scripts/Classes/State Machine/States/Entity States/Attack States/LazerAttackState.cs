@@ -50,7 +50,7 @@ public class LazerAttackState : EntityState
     public override void Execute()
     {
         _lineRenderer.SetPosition(0, transform.position);
-        _lineRenderer.SetPosition(1, transform.position + Vector3.up * _length);
+        _lineRenderer.SetPosition(1, transform.position + Core.transform.up * _length);
 
         RaycastHit2D lefthit = Physics2D.Raycast(
             transform.position - transform.right * _width * .5f, transform.up, _length, _damageabaleLayers);
