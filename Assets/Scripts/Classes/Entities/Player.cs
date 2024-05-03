@@ -7,7 +7,6 @@ public class Player : SingletonEntity<Player>
 {
     #region Global Variables
     [Space, Header("States")]
-    [SerializeField] DamageState _damageState;
     [SerializeField] MoveState _moveState;
     
     [HideInInspector] public UnityEvent HitpointsUpdateBroadcaster; 
@@ -39,14 +38,7 @@ public class Player : SingletonEntity<Player>
 
     protected override void SelectState()
     {
-        if (AttacksQueueSize > 0 || (State == _damageState && !State.IsComplete))
-        {
-            SetState(_damageState);
-        }
-        else
-        {
-            SetState(_moveState);
-        }
+        SetState(_moveState);
     }
     #endregion
 

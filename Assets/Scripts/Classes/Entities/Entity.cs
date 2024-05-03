@@ -31,10 +31,6 @@ public abstract class Entity : MonoBehaviour, IDamageable, IHealable
     Queue<Heal> IHealable.healsQueue { get => _healsQueue; set => _healsQueue = value; }
     public int HealQueueSizee => _healsQueue.Count;
 
-    protected Queue<Attack> _attacksQueue;
-    Queue<Attack> IDamageable.attacksQueue { get => _attacksQueue; set => _attacksQueue = value; }
-    public int AttacksQueueSize => _attacksQueue.Count;
-
     void OnDrawGizmos()
     {
 #if UNITY_EDITOR
@@ -46,7 +42,6 @@ public abstract class Entity : MonoBehaviour, IDamageable, IHealable
     protected virtual void Awake()
     {
         IsAlive = true;
-        _attacksQueue = new Queue<Attack>();
         _healsQueue = new Queue<Heal>();
         _maxHitPoints = _hitPoints;
     }
@@ -58,33 +53,15 @@ public abstract class Entity : MonoBehaviour, IDamageable, IHealable
 
     protected abstract void SelectState();
 
-    public virtual bool Damage(Attack attack)
+    public virtual void Damage(int damage)
     {
-        if (attack.Damage < 0 || _hitPoints <= 0 || IsRecovering)
-            return false;
-
-        _attacksQueue.Enqueue(attack);
-        return true;
-    }
-
-    public virtual Attack DequeueAttacks()
-    {
-        if (_attacksQueue.Count == 0)
-            return new Attack(0, null, null);
-
-        Attack attack =  _attacksQueue.Dequeue();
-        _hitPoints -= attack.Damage;
-
+        if (damage <= 0 || _hitPoints <= 0)
+            return;
+        _hitPoints -= damage;
         if (_hitPoints <= 0)
             Die();
-
-        return attack;
     }
 
-    public virtual Attack PeekAttacksQueue()
-    {
-        return _attacksQueue.Peek();
-    }
 
     public virtual bool Heal(Heal heal)
     {
