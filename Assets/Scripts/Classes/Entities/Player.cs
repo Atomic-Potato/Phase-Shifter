@@ -44,7 +44,7 @@ public class Player : SingletonEntity<Player>
         {
             SetState(_shootAttackState);
         }
-        else if ((Input.GetKeyDown(KeyCode.Mouse1) && !_escapeDashState.IsInDelay) 
+        else if ((Input.GetKeyDown(KeyCode.Space) && !_escapeDashState.IsInDelay) 
             || (State == _escapeDashState && !State.IsComplete))
         {
             SetState(_escapeDashState);

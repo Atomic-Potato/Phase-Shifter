@@ -4,7 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Main Player
+  - Enemy
+  - Main_Player
   layers:
   - Default
   - TransparentFX
