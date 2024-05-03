@@ -42,4 +42,10 @@ public class EnemyType1 : Enemy
             Destroy(gameObject);
         }
     }
+
+    public override void Die()
+    {
+        base.Die();
+        gameObject.SetActive(false);
+    }
 }
