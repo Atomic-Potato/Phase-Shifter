@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Type3Spawner : MonoBehaviour, ISpawner
+public class Type3Spawner : Spawner
 {
     [SerializeField] EnemyType3 _enemyPrefab;
     [SerializeField] Transform _worldCenter;
@@ -35,12 +35,8 @@ public class Type3Spawner : MonoBehaviour, ISpawner
         }
 #endif   
     }
-    public GameObject GetGameObject()
-    {
-        return gameObject;
-    }
 
-    public void Spawn(int count)
+    public override void Spawn(int count)
     {
         if (count <= 0)
             return;

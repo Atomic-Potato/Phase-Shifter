@@ -13,5 +13,11 @@ namespace Enemies
             _worldCenter = EnemiesManager.Instance.WorldCenter;
             Target = Player.Instance;
         }
+
+        public override void Die()
+        {
+            base.Die();
+            EnemiesManager.Instance.Enemies.Remove(this);
+        }
     }
 }

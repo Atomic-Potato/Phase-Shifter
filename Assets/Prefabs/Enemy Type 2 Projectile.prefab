@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
-  _force: 15
+  _force: 8
   _destructionDelay: 5
   _collisionDetectionRadius: 0.15
   _rigidbody: {fileID: 7015344600894525571}

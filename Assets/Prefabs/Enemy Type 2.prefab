@@ -52,7 +52,8 @@ MonoBehaviour:
   _waveFrequency: 1
   DirectionAxis: 1
   _subState: {fileID: 7119288668964089581}
-  _subStateFrequency: 1
+  _subStateFrequency: 2
+  _subStatePivot: {fileID: 0}
   _moveAxis: {x: 0, y: 0}
 --- !u!1 &6222919066146616458
 GameObject:
@@ -214,7 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae789738fd6f58049aa095a5e65c917e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hitPoints: 1
+  _hitPoints: 3
   _layer:
     serializedVersion: 2
     m_Bits: 512

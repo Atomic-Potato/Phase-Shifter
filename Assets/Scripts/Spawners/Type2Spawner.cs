@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Type2Spawner : MonoBehaviour, ISpawner
+public class Type2Spawner : Spawner
 {
     [SerializeField] EnemyType2 _enemyPrefab;
     [SerializeField] Transform _worldCenter;
@@ -36,12 +36,8 @@ public class Type2Spawner : MonoBehaviour, ISpawner
         }
 #endif   
     }
-    public GameObject GetGameObject()
-    {
-        return gameObject;
-    }
 
-    public void Spawn(int count)
+    public override void Spawn(int count)
     {
         if (count <= 0)
             return;
@@ -52,11 +48,11 @@ public class Type2Spawner : MonoBehaviour, ISpawner
         {
             Vector2 direction = GetCompassDirection(GetRandomHeading());
             Vector3 convertedDirection = Quaternion.Euler(0, 0, -90) * direction;
-            Vector3 startPosition = direction * _spawnDistance;
+            Vector3 startPosition = _worldCenter.position + (Vector3)direction * _spawnDistance;
             float spacing = _spawnWidth / (count - 1);
             for (int i = 0; i < count; i++)
             {
-                Vector3 position = startPosition + convertedDirection * (i * spacing) ;
+                Vector3 position = startPosition + convertedDirection * (i * spacing);
                 EnemyType2  enemy = Instantiate(_enemyPrefab, position, Quaternion.identity);
                 if (direction.x != 0)
                 {
@@ -90,7 +86,7 @@ public class Type2Spawner : MonoBehaviour, ISpawner
                 direction = Vector2.right;
                 break;
             case Compass.West:
-                direction = -Vector2.up;
+                direction = -Vector2.right;
                 break;
         }
         return direction;
@@ -98,6 +94,7 @@ public class Type2Spawner : MonoBehaviour, ISpawner
 
     Compass GetRandomHeading()
     {
-        return (Compass)UnityEngine.Random.Range(0, 4);
+        Compass heading = (Compass)UnityEngine.Random.Range(0, 4);
+        return heading;
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class Type1Spawner : MonoBehaviour, ISpawner
+public class Type1Spawner : Spawner
 {
     [SerializeField] EnemyType1 _enemyPrefab;
     [SerializeField] Transform _worldCenter;
@@ -23,7 +23,7 @@ public class Type1Spawner : MonoBehaviour, ISpawner
 #endif   
     }
 
-    public void Spawn(int count)
+    public override void Spawn(int count)
     {
         if (count <= 0)
             return;
@@ -42,10 +42,5 @@ public class Type1Spawner : MonoBehaviour, ISpawner
                 yield return new WaitForSeconds(_spawnDelay);
             }
         }
-    }
-
-    public GameObject GetGameObject()
-    {
-        return gameObject;
     }
 }
