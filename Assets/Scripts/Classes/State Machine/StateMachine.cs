@@ -6,6 +6,9 @@ public class StateMachine
 
     public void SetState(State state, bool isForceReset = false)
     {
+        if (state == null)
+            return;
+            
         if (state != State || isForceReset)
         {
             State?.Exit();

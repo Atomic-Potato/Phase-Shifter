@@ -5,11 +5,12 @@ using UnityEngine;
 public class ShootAttackState : EntityState
 {
     [SerializeField] float _delay = 0.1f;
-    [SerializeField] GameObject _projectilePrefab;
+    [SerializeField] Projectile _projectilePrefab;
     [SerializeField] Transform _shootingTip;
 
     [Space]
     [SerializeField] MoveState _moveState;
+    [SerializeField] LookAtTargetState _lookAtTargetState;
 
     public override void Enter()
     {
@@ -17,7 +18,17 @@ public class ShootAttackState : EntityState
 
         if (_delayCoroutine != null)
             return;
-        Instantiate(_projectilePrefab, _shootingTip.position, Quaternion.identity);
+        Debug.Log("Shot");
+
+        Projectile projectile = Instantiate(_projectilePrefab, _shootingTip.position, Quaternion.identity);
+        Vector2 direction = _lookAtTargetState.GetTargetDirection();
+        if (direction != Vector2.zero)
+        {
+            float angleRadians = Mathf.Atan2(direction.y, direction.x);
+            float angleDegrees = angleRadians * Mathf.Rad2Deg;
+            projectile.transform.rotation = Quaternion.Euler(0f, 0f, angleDegrees);
+        }
+        projectile.Launch();
         Delay();
     }
 

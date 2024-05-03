@@ -17,20 +17,23 @@ public class LookAtTargetState : EntityState
 
     public override void Execute()
     {
-        Vector2 targetPosition = IsTargetMouse ?
-            Camera.main.ScreenToWorldPoint(Input.mousePosition) :
-            Target.position;
-        Vector2 direction = (targetPosition - (Vector2)_objectToRotate.position).normalized;
-        Debug.Log(direction);
+        Vector2 direction = GetTargetDirection();
         if (direction != Vector2.zero)
         {
             float angleRadians = Mathf.Atan2(direction.y, direction.x);
             float angleDegrees = angleRadians * Mathf.Rad2Deg;
-            Debug.Log(angleDegrees);
             _objectToRotate.rotation = Quaternion.Euler(0f, 0f, angleDegrees);
         }
 
         Exit();
+    }
+
+    public Vector2 GetTargetDirection()
+    {
+        Vector2 targetPosition = IsTargetMouse ?
+            Camera.main.ScreenToWorldPoint(Input.mousePosition) :
+            Target.position;
+        return (targetPosition - (Vector2)_objectToRotate.position).normalized;
     }
 
     public override void Exit()

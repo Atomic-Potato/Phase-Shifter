@@ -16,6 +16,8 @@ public class Projectile : MonoBehaviour
     [Space, Header("Gizmos")]
     [SerializeField] bool _isDrawGizmos;
 
+    bool _isLaunched;
+
     void OnDrawGizmos()
     {
 #if UNITY_EDITOR
@@ -26,8 +28,9 @@ public class Projectile : MonoBehaviour
 #endif
     }
 
-    void Awake()
+    public void Launch()
     {
+        _isLaunched = true;
         Destroy(gameObject, _destructionDelay);
         _rigidbody.velocity = transform.right * _force;
     }
@@ -35,6 +38,9 @@ public class Projectile : MonoBehaviour
 
     void Update()
     {
+        if (!_isLaunched)
+            return;
+            
         RaycastHit2D hit = Physics2D.CircleCast(transform.position, _collisionDetectionRadius, Vector2.zero, 0f, _damageLayers);
         if (hit.collider != null)
         {

@@ -8,7 +8,8 @@ public class Player : SingletonEntity<Player>
     #region Global Variables
     [Space, Header("States")]
     [SerializeField] MoveState _moveState;
-    
+    [SerializeField] ShootAttackState _shootAttackState;
+
     [HideInInspector] public UnityEvent HitpointsUpdateBroadcaster; 
     
     #endregion
@@ -38,7 +39,15 @@ public class Player : SingletonEntity<Player>
 
     protected override void SelectState()
     {
-        SetState(_moveState);
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            SetState(_shootAttackState);
+            Debug.Log("Set shot state");
+        }
+        else
+        {
+            SetState(_moveState);
+        }
     }
     #endregion
 
