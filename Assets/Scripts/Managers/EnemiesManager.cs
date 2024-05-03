@@ -10,10 +10,16 @@ public class EnemiesManager : Singleton<EnemiesManager>
     public Transform WorldCenter => _worldCenter;
     public List<Enemy> Enemies { get; private set; }
 
+    [SerializeField] Type1Spawner _type1Spawner;
 
     new void Awake()
     {
         base.Awake();
         Enemies = new List<Enemy>();
+    }
+
+    void Start()
+    {
+        _type1Spawner.Spawn(10);
     }
 }
