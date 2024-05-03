@@ -460,6 +460,6 @@ MonoBehaviour:
   _delay: 0.1
   _projectilePrefab: {fileID: 4423798156908553020, guid: df3e3cff40b8e1345b6ab94f34c2a3c6,
     type: 3}
-  _shootingTip: {fileID: 5040854324732427402}
+  ShootingTip: {fileID: 5040854324732427402}
   _moveState: {fileID: 5040854324338716629}
   _lookAtTargetState: {fileID: 5040854323732379766}

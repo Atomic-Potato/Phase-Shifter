@@ -11,6 +11,7 @@ public class EnemiesManager : Singleton<EnemiesManager>
     public List<Enemy> Enemies { get; private set; }
 
     [SerializeField] Type1Spawner _type1Spawner;
+    [SerializeField] Type2Spawner _type2Spawner;
 
     new void Awake()
     {
@@ -20,6 +21,7 @@ public class EnemiesManager : Singleton<EnemiesManager>
 
     void Start()
     {
-        _type1Spawner.Spawn(10);
+        // _type1Spawner.Spawn(10);
+        _type2Spawner.Spawn(5);
     }
 }

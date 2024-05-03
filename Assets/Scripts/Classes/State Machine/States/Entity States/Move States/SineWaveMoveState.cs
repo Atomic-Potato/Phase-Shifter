@@ -5,31 +5,32 @@ using UnityEngine;
 public class SineWaveMoveState : EntityState
 {
     [Space]
-    [SerializeField, Min(0)] float _speed = 1; 
+    [Min(0)] public float Speed = 1; 
     [SerializeField, Min(0)] float _waveSpeed = 1;
     [SerializeField, Min(0)] float _waveAmplitude = 1;
     [SerializeField, Min(0)] float _waveFrequency = 1;
-    [SerializeField] Axis _movementAxis = Axis.Horizontal;
+    public Axis DirectionAxis = Axis.Horizontal;
 
     [Space]
     [SerializeField] EntityState _subState;
     [SerializeField, Min(0)] float _subStateFrequency = 2f;
+    [SerializeField] Transform _subStatePivot;
     
     Vector2 _initialPosition;
 
-    enum Axis
+    public enum Axis
     {
         Vertical,
         Horizontal,
     }
-    Vector2 _moveAxis;
+    [HideInInspector] public Vector2 _moveAxis;
     Vector2 _waveAxis;
 
     public override void Enter()
     {
         IsComplete = false;
         _initialPosition = Core.transform.position;
-        switch (_movementAxis)
+        switch (DirectionAxis)
         {
             case Axis.Horizontal:
                 _moveAxis = Vector2.right;
@@ -40,6 +41,7 @@ public class SineWaveMoveState : EntityState
                 _waveAxis = Vector2.right;
                 break;
         }
+        UpdateRotation();
     }
 
     public override void Execute()
@@ -47,7 +49,7 @@ public class SineWaveMoveState : EntityState
         float yOffset = Mathf.Sin(Time.time * _waveSpeed * _waveFrequency) * _waveAmplitude;
         Vector3 newPosition = _initialPosition + _waveAxis * yOffset;
         Core.transform.position = newPosition;
-        _initialPosition += _moveAxis * _speed * Time.deltaTime;
+        _initialPosition += _moveAxis * Speed * Time.deltaTime;
 
         SetSubstate();
     }
@@ -69,6 +71,15 @@ public class SineWaveMoveState : EntityState
     public override void Exit()
     {
         IsComplete = true;
+    }
+
+    public void UpdateRotation()
+    {
+        if (_subState != null)
+        {
+            _subState.transform.right = _moveAxis * Mathf.Sign(Speed);
+            EntityCore.SpriteRenderer.transform.right = _moveAxis * Mathf.Sign(Speed);
+        }
     }
 
     public override void FixedExecute()

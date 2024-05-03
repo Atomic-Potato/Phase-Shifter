@@ -121,6 +121,56 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &90345052
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 90345053}
+  - component: {fileID: 90345054}
+  m_Layer: 0
+  m_Name: Type 2 Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &90345053
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90345052}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 709502580}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &90345054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90345052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8276be72a71499c4fa6ea745df042751, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyPrefab: {fileID: 6222919067701288228, guid: 5d613882d50f7df4aa64f5da9bc13cc3,
+    type: 3}
+  _worldCenter: {fileID: 1786337943}
+  _spawnDistance: 10
+  _spawnDelay: 0
+  _spawnWidth: 5
+  _isDrawGizmos: 1
 --- !u!1 &319552624
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,6 +369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _worldCenter: {fileID: 1786337943}
   _type1Spawner: {fileID: 1464169771}
+  _type2Spawner: {fileID: 90345054}
 --- !u!4 &709502580
 Transform:
   m_ObjectHideFlags: 0
@@ -331,6 +382,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1464169770}
+  - {fileID: 90345053}
   m_Father: {fileID: 319552625}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -425,7 +477,7 @@ MonoBehaviour:
   _worldCenter: {fileID: 1786337943}
   _spawnRadius: 15
   _spawnDelay: 1
-  _isDrawGizmos: 1
+  _isDrawGizmos: 0
 --- !u!1 &1786337941
 GameObject:
   m_ObjectHideFlags: 0

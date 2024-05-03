@@ -6,7 +6,7 @@ public class ShootAttackState : EntityState
 {
     [SerializeField, Min(0)] float _delay = 0.1f;
     [SerializeField] Projectile _projectilePrefab;
-    [SerializeField] Transform _shootingTip;
+    public Transform ShootingTip;
 
     [Space]
     [SerializeField] MoveState _moveState;
@@ -19,7 +19,7 @@ public class ShootAttackState : EntityState
         if (_delayCoroutine != null)
             return;
 
-        Projectile projectile = Instantiate(_projectilePrefab, _shootingTip.position, Quaternion.identity);
+        Projectile projectile = Instantiate(_projectilePrefab, ShootingTip.position, Quaternion.identity);
         Vector2 direction = _lookAtTargetState.GetTargetDirection();
         if (direction != Vector2.zero)
         {
