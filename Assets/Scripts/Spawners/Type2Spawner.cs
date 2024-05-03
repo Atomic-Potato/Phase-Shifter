@@ -49,7 +49,7 @@ public class Type2Spawner : Spawner
             Vector2 direction = GetCompassDirection(GetRandomHeading());
             Vector3 convertedDirection = Quaternion.Euler(0, 0, -90) * direction;
             Vector3 startPosition = _worldCenter.position + (Vector3)direction * _spawnDistance;
-            float spacing = _spawnWidth / (count - 1);
+            float spacing = _spawnWidth / count;
             for (int i = 0; i < count; i++)
             {
                 Vector3 position = startPosition + convertedDirection * (i * spacing);

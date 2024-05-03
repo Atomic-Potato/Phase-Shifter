@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Enemies;
 using UnityEngine;
 using UnityEngine.Events;
+using System.Threading;
 
 public class EnemiesManager : Singleton<EnemiesManager>
 {
@@ -13,6 +14,12 @@ public class EnemiesManager : Singleton<EnemiesManager>
 
     [Space]
     [SerializeField] Transform _worldCenter;
+    
+    [Space, Header("Spawners")]
+    [SerializeField] Type1Spawner _type1Spawner;
+    [SerializeField] Type2Spawner _type2Spawner;
+    [SerializeField] Type3Spawner _type3Spawner;
+
     public Transform WorldCenter => _worldCenter;
     public List<Enemy> Enemies { get; private set; }
 
@@ -22,7 +29,14 @@ public class EnemiesManager : Singleton<EnemiesManager>
     UnityEvent _lasWaveBroadcaster;
 
     bool _isStopSpawning;
-    int _spanwerIndex;
+    int _spawnerIndex;
+
+    enum Types
+    {
+        Type1,
+        Type2,
+        Type3,
+    }
 
     new void Awake()
     {
@@ -54,9 +68,30 @@ public class EnemiesManager : Singleton<EnemiesManager>
         IEnumerator Spawn()
         {
             Wave wave = _waves[CurrentWave];
-            wave.Spawners[_spanwerIndex % wave.Spawners.Count].Spawner.
-                Spawn(wave.Spawners[_spanwerIndex % wave.Spawners.Count].SpawnedCount);
-            _spanwerIndex++;
+            for (int i = 0; i < 3; i++) // protective measurement
+            {
+                Types type = (Types)(_spawnerIndex % 3);
+                if (type == Types.Type1 && wave.Type1Count != 0)
+                {
+                    _type1Spawner.Spawn(wave.Type1Count);
+                    _spawnerIndex++;
+                    break;
+                }
+                if (type == Types.Type2 && wave.Type2Count != 0)
+                {
+                    _type2Spawner.Spawn(wave.Type2Count);
+                    _spawnerIndex++;
+                    break;
+                }
+                if (type == Types.Type3 && wave.Type3Count != 0)
+                {
+                    _type3Spawner.Spawn(wave.Type3Count);
+                    _spawnerIndex++;
+                    break;
+                }
+                _spawnerIndex++;
+            }
+
             yield return new WaitForSeconds(wave.SpawnDelay);
             _spawnCoroutine = null;
         }
@@ -75,15 +110,10 @@ public class EnemiesManager : Singleton<EnemiesManager>
 }
 
 [Serializable]
-public struct Wave
+public class Wave
 {
     [Min(1)] public float SpawnDelay;
-    [SerializeField] public List<Spawn> Spawners;
-}
-
-[Serializable]
-public struct Spawn
-{
-    [Min(0)] public int SpawnedCount;
-    [SerializeField] public Spawner Spawner;
+    [Min(0)] public int Type1Count;
+    [Min(0)] public int Type2Count;
+    [Min(0)] public int Type3Count;
 }

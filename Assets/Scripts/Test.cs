@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Test : MonoBehaviour
 {
-    [SerializeField] Type2Spawner _spawner;
-    void Start()
+    [SerializeField] Spawner _spawner;
+    void Update()
     {
+        if (Input.GetKeyDown(KeyCode.T))
         _spawner.Spawn(5);
     }
 }

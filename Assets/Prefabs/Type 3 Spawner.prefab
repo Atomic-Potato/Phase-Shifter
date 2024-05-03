@@ -46,7 +46,7 @@ MonoBehaviour:
   _enemyPrefab: {fileID: 4969355136799979223, guid: d717b05452f1ca04d88579ff68c605dc,
     type: 3}
   _worldCenter: {fileID: 0}
-  _spawnDistance: 10
+  _spawnDistance: 20
   _spawnDelay: 0
   _spawnWidth: 15
   _isDrawGizmos: 0
