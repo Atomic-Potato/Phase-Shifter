@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShootAttackState : EntityState
 {
-    [SerializeField] float _delay = 0.1f;
+    [SerializeField, Min(0)] float _delay = 0.1f;
     [SerializeField] Projectile _projectilePrefab;
     [SerializeField] Transform _shootingTip;
 
