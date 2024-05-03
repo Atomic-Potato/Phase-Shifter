@@ -18,7 +18,6 @@ public class ShootAttackState : EntityState
 
         if (_delayCoroutine != null)
             return;
-        Debug.Log("Shot");
 
         Projectile projectile = Instantiate(_projectilePrefab, _shootingTip.position, Quaternion.identity);
         Vector2 direction = _lookAtTargetState.GetTargetDirection();

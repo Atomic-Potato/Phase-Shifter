@@ -9,6 +9,7 @@ public class Player : SingletonEntity<Player>
     [Space, Header("States")]
     [SerializeField] MoveState _moveState;
     [SerializeField] ShootAttackState _shootAttackState;
+    [SerializeField] EscapeDash _escapeDashState;
 
     [HideInInspector] public UnityEvent HitpointsUpdateBroadcaster; 
     
@@ -42,7 +43,11 @@ public class Player : SingletonEntity<Player>
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             SetState(_shootAttackState);
-            Debug.Log("Set shot state");
+        }
+        else if ((Input.GetKeyDown(KeyCode.Mouse1) && !_escapeDashState.IsInDelay) 
+            || (State == _escapeDashState && !State.IsComplete))
+        {
+            SetState(_escapeDashState);
         }
         else
         {
