@@ -119,6 +119,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hitPoints: 3
+  _isCanRecover: 1
+  _recoveryDuration: 1
   _layer:
     serializedVersion: 2
     m_Bits: 256

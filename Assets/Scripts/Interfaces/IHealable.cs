@@ -3,19 +3,6 @@ using UnityEngine;
 
 public interface IHealable
 {
-    Queue<Heal> healsQueue { get; set; }
-    bool Heal(Heal heal);
-    Heal PeekHealsQueue();
-    Heal DequeueHeals();
+    void Heal(int healing);
     GameObject GetGameObject();
-}
-
-public struct Heal
-{
-    public int Healing;
-
-    public Heal(int healing)
-    {
-        Healing = healing;
-    }
 }

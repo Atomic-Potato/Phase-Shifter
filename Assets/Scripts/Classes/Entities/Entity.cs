@@ -1,6 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
 using UnityEngine;
 
 [RequireComponent(typeof(EntityCore))]
@@ -11,6 +9,12 @@ public abstract class Entity : MonoBehaviour, IDamageable, IHealable
     public int HitPoints => _hitPoints;
     protected int _maxHitPoints;
     public int MaxHitPoints => _maxHitPoints;
+
+    [Space]
+    [SerializeField] protected bool _isCanRecover;
+    [SerializeField, Min(0)] float _recoveryDuration = 1f;
+    [SerializeField, Min(0)] float _recoveryFlashFrequency = .1f;
+
     
     [Space]
     [SerializeField] protected LayerMask _layer;
@@ -27,10 +31,6 @@ public abstract class Entity : MonoBehaviour, IDamageable, IHealable
     [HideInInspector] public bool IsAttacking;
     public bool IsRecovering {get; protected set;}
 
-    protected Queue<Heal> _healsQueue;
-    Queue<Heal> IHealable.healsQueue { get => _healsQueue; set => _healsQueue = value; }
-    public int HealQueueSizee => _healsQueue.Count;
-
     void OnDrawGizmos()
     {
 #if UNITY_EDITOR
@@ -42,7 +42,6 @@ public abstract class Entity : MonoBehaviour, IDamageable, IHealable
     protected virtual void Awake()
     {
         IsAlive = true;
-        _healsQueue = new Queue<Heal>();
         _maxHitPoints = _hitPoints;
     }
     
@@ -55,39 +54,25 @@ public abstract class Entity : MonoBehaviour, IDamageable, IHealable
 
     public virtual void Damage(int damage)
     {
-        if (damage <= 0 || _hitPoints <= 0)
+        if (damage <= 0 || _hitPoints <= 0 || IsRecovering)
             return;
         _hitPoints -= damage;
         if (_hitPoints <= 0)
+        {
             Die();
+        }
+        else if (_isCanRecover)
+        {
+            Recover(_recoveryDuration);
+        }
     }
 
 
-    public virtual bool Heal(Heal heal)
+    public virtual void Heal(int healing)
     {
-        if (heal.Healing < 0 || _hitPoints >= MaxHitPoints)
-            return false;
-
-        _healsQueue.Enqueue(heal);
-        return true;
-    }
-
-    public virtual Heal DequeueHeals()
-    {
-        if (_hitPoints == _maxHitPoints || _healsQueue.Count == 0)
-            return new Heal(0);
-
-        Heal heal =  _healsQueue.Dequeue();
-        _hitPoints += heal.Healing;
-        if (_hitPoints > _maxHitPoints)
-            _hitPoints = _maxHitPoints;
-
-        return heal;
-    }
-
-    public Heal PeekHealsQueue()
-    {
-        return _healsQueue.Peek();
+        if (healing < 0 || _hitPoints >= MaxHitPoints)
+            return;
+        _hitPoints += healing;
     }
 
     protected Coroutine _recoveryCoroutine;
@@ -102,11 +87,25 @@ public abstract class Entity : MonoBehaviour, IDamageable, IHealable
         IEnumerator Run()
         {
             IsRecovering = true;
+            StartCoroutine(Animation());
             _core.DetectionCollider.enabled = false;
             yield return new WaitForSeconds(duration);
             _core.DetectionCollider.enabled = true;
             IsRecovering = false;
             _recoveryCoroutine = null;
+        }
+
+        IEnumerator Animation()
+        {
+            float startTime = Time.time;
+            while ((Time.time - startTime) < _recoveryDuration)
+            {
+                _core.SpriteRenderer.enabled = false;
+                yield return new WaitForSeconds(_recoveryFlashFrequency);
+                _core.SpriteRenderer.enabled = true;
+                yield return new WaitForSeconds(_recoveryFlashFrequency);
+            }
+            _core.SpriteRenderer.enabled = true;
         }
     }
     
