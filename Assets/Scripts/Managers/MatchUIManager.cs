@@ -8,6 +8,10 @@ public class MatchUIManager : Singleton<MatchUIManager>
     [SerializeField] GameObject _restartMenu;
     [SerializeField] GameObject _pauseMenu;
 
+    [Space]
+    [SerializeField] Transform _healthIconsParent;
+    [SerializeField] GameObject _healthIconPrefab;
+
     void Start()
     {
         _gameUI.SetActive(true);
@@ -16,11 +20,21 @@ public class MatchUIManager : Singleton<MatchUIManager>
 
         Player.Instance.DeathBroadcaster.AddListener(ShowRestartScreen);
         Player.Instance.HitpointsUpdateBroadcaster.AddListener(UpdateHitpoints);
+        UpdateHitpoints();
     }
 
     public void UpdateHitpoints()
     {
 
+        foreach(Transform child in _healthIconsParent)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+
+        for (int i = 0; i < Player.Instance.HitPoints; i++)
+        {
+            Instantiate(_healthIconPrefab, _healthIconsParent);
+        }
     }
 
     public void ShowRestartScreen()
