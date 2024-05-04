@@ -621,6 +621,7 @@ GameObject:
   m_Component:
   - component: {fileID: 683099136}
   - component: {fileID: 683099137}
+  - component: {fileID: 683099138}
   m_Layer: 0
   m_Name: Space Dust
   m_TagString: Untagged
@@ -700,6 +701,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &683099138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683099135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c0b4a3e2e873d5409fcd0448aaa3e11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parallaxMultiplier: 0.85
 --- !u!1 &709502578
 GameObject:
   m_ObjectHideFlags: 0
@@ -1036,6 +1050,7 @@ GameObject:
   m_Component:
   - component: {fileID: 928916325}
   - component: {fileID: 928916326}
+  - component: {fileID: 928916327}
   m_Layer: 0
   m_Name: The moon
   m_TagString: Untagged
@@ -1107,6 +1122,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &928916327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928916324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c0b4a3e2e873d5409fcd0448aaa3e11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parallaxMultiplier: 1
 --- !u!1 &973838491
 GameObject:
   m_ObjectHideFlags: 0
@@ -1360,6 +1388,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1153670639}
   - component: {fileID: 1153670640}
+  - component: {fileID: 1153670641}
   m_Layer: 0
   m_Name: Earth
   m_TagString: Untagged
@@ -1431,6 +1460,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1153670641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153670638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c0b4a3e2e873d5409fcd0448aaa3e11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parallaxMultiplier: 1
 --- !u!1 &1191771268
 GameObject:
   m_ObjectHideFlags: 0
@@ -1522,6 +1564,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1215775320}
   - component: {fileID: 1215775321}
+  - component: {fileID: 1215775322}
   m_Layer: 0
   m_Name: The sun
   m_TagString: Untagged
@@ -1593,6 +1636,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1215775322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215775319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c0b4a3e2e873d5409fcd0448aaa3e11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parallaxMultiplier: 1
 --- !u!1 &1285452203
 GameObject:
   m_ObjectHideFlags: 0
@@ -2599,6 +2655,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2110556062}
   - component: {fileID: 2110556063}
+  - component: {fileID: 2110556064}
   m_Layer: 0
   m_Name: Stars
   m_TagString: Untagged
@@ -2678,6 +2735,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2110556064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2110556061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c0b4a3e2e873d5409fcd0448aaa3e11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parallaxMultiplier: 0.95
 --- !u!1001 &5040854323263142701
 PrefabInstance:
   m_ObjectHideFlags: 0
