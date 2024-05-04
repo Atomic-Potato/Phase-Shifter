@@ -745,15 +745,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _roundLengthInSeconds: 120
   _waves:
-  - SpawnDelay: 5
+  - SpawnDelay: 8
     Type1Count: 10
     Type2Count: 0
     Type3Count: 0
-  - SpawnDelay: 8
+  - SpawnDelay: 7
     Type1Count: 8
     Type2Count: 3
     Type3Count: 0
-  - SpawnDelay: 5
+  - SpawnDelay: 6
     Type1Count: 15
     Type2Count: 4
     Type3Count: 1

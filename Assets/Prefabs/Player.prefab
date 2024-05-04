@@ -70,6 +70,63 @@ MonoBehaviour:
   _fadeoutSpeed: 4
   _ghostsToCache: 16
   _ghostsParent: {fileID: 0}
+--- !u!1 &2464417157174776763
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7314085901558291564}
+  - component: {fileID: 7518347982855770151}
+  m_Layer: 0
+  m_Name: Collision Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7314085901558291564
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2464417157174776763}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5040854322868775968}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &7518347982855770151
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2464417157174776763}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.20417674, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.59164655, y: 0.41}
+  m_EdgeRadius: 0
 --- !u!1 &5040854322868775969
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,6 +159,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5040854323249277353}
+  - {fileID: 7314085901558291564}
   - {fileID: 5040854324443235717}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -151,7 +209,7 @@ MonoBehaviour:
   _entity: {fileID: 5040854322868775996}
   _rigidbody: {fileID: 5040854322868775970}
   _detectionCollider: {fileID: 5040854322868775971}
-  _worldCollisionCollider: {fileID: 5040854322868775971}
+  _worldCollisionCollider: {fileID: 7518347982855770151}
   _spriteRenderer: {fileID: 5040854323249277352}
   _animator: {fileID: 4352957250805401274}
 --- !u!60 &5040854322868775971
@@ -436,7 +494,7 @@ Transform:
   - {fileID: 5040854324732427402}
   - {fileID: 232381811786535614}
   m_Father: {fileID: 5040854322868775968}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5040854324732427403
 GameObject:
