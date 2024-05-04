@@ -20,6 +20,7 @@ public class GameManager : Singleton<GameManager>
     void Start()
     {
         EnemiesManager.Instance.NoEnemiesLeftBroadcaster.AddListener(() => GameEndBroadcaster.Invoke());
+        Player.Instance.IsActive = true;
     }
 
     void Update()
