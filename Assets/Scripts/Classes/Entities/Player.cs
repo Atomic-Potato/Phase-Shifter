@@ -12,7 +12,7 @@ public class Player : SingletonEntity<Player>
     [SerializeField] EscapeDash _escapeDashState;
 
     [HideInInspector] public UnityEvent HitpointsUpdateBroadcaster; 
-    
+    [HideInInspector] public UnityEvent DeathBroadcaster;
     #endregion
 
     #region Execution
@@ -20,6 +20,7 @@ public class Player : SingletonEntity<Player>
     {
         base.Awake();
         HitpointsUpdateBroadcaster = new UnityEvent();
+        DeathBroadcaster = new UnityEvent();
     }
 
     void Start()
@@ -58,13 +59,21 @@ public class Player : SingletonEntity<Player>
     public override void Damage(int damage)
     {
         base.Damage(damage);
+        HitpointsUpdateBroadcaster.Invoke();
         SoundManager.Instance.PlaySoundAtPosition(transform.position, SoundManager.Sound.Damaged);
+    }
+
+    public override void Heal(int healing)
+    {
+        base.Heal(healing);
+        HitpointsUpdateBroadcaster.Invoke();
     }
     #endregion
 
     public override void Die()
     {
         base.Die();
+        DeathBroadcaster.Invoke();
         gameObject.SetActive(false);
     }
 }

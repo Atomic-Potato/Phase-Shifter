@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GameManager : Singleton<GameManager>
 {
@@ -9,9 +7,18 @@ public class GameManager : Singleton<GameManager>
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            ReloadCurrentScene();
         }
 #endif
     }
 
+    public void ReloadCurrentScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void ExitApplication()
+    {
+        Application.Quit();
+    }
 }
