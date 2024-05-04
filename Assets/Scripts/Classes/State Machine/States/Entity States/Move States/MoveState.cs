@@ -13,6 +13,10 @@ public class MoveState : EntityState
     [Space]
     [SerializeField] LookAtTargetState _lookAtTargetState;
 
+    [Space]
+    [SerializeField] AnimationClip _idleClip;
+    [SerializeField] AnimationClip _moveClip;
+
     public override void Enter()
     {
         IsComplete = false;
@@ -21,8 +25,6 @@ public class MoveState : EntityState
 
     public override void Execute()
     {
-        // if (IsComplete)
-        //     return;
 
         AnimationManager?.PlayAnimation(EntityCore);
         _input.x = Input.GetAxisRaw("Horizontal");
@@ -32,17 +34,18 @@ public class MoveState : EntityState
 
     public override void FixedExecute()
     {
-        // if (IsComplete)
-        //     return;
-
         if (_input != _noInput)
         {
             Vector2 targetVelocity = _input * Speed;
             Accelerate(targetVelocity);
+            if (_moveClip != null)
+                EntityCore.Animator?.Play(_moveClip.name);
         }
         else
         {
             Decelerate();
+            if (_idleClip != null)
+                EntityCore.Animator?.Play(_idleClip.name);
         }
 
         Exit();

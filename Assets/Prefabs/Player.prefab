@@ -121,6 +121,7 @@ MonoBehaviour:
   _hitPoints: 3
   _isCanRecover: 1
   _recoveryDuration: 1
+  _recoveryFlashFrequency: 0.1
   _layer:
     serializedVersion: 2
     m_Bits: 256
@@ -152,7 +153,7 @@ MonoBehaviour:
   _detectionCollider: {fileID: 5040854322868775971}
   _worldCollisionCollider: {fileID: 5040854322868775971}
   _spriteRenderer: {fileID: 5040854323249277352}
-  _animator: {fileID: 0}
+  _animator: {fileID: 4352957250805401274}
 --- !u!60 &5040854322868775971
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -212,6 +213,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5040854323249277353}
   - component: {fileID: 5040854323249277352}
+  - component: {fileID: 4352957250805401274}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -272,7 +274,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fc2635c023125ce418c176bee8db3a3d, type: 3}
+  m_Sprite: {fileID: -467307283419413426, guid: 5d65d3849464c0c4f9a362f281a733d1,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -283,6 +286,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &4352957250805401274
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5040854323249277358}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9864576c991260647bbb01b6355a7401, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5040854323732379764
 GameObject:
   m_ObjectHideFlags: 0
@@ -381,6 +403,8 @@ MonoBehaviour:
   AccelerationTime: 0.25
   DecelerationTime: 0.15
   _lookAtTargetState: {fileID: 5040854323732379766}
+  _idleClip: {fileID: 7400000, guid: 79c93e4560673704394ffef857f81dd9, type: 2}
+  _moveClip: {fileID: 7400000, guid: 3367473560b102442a22a0a4e398ecee, type: 2}
 --- !u!1 &5040854324443235722
 GameObject:
   m_ObjectHideFlags: 0
