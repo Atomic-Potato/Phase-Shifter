@@ -935,7 +935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6a30659a72f2e44ab36152c0ae7eb70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _roundLengthInSeconds: 60
+  _roundLengthInSeconds: 120
   _waves:
   - SpawnDelay: 8
     Type1Count: 10
@@ -944,11 +944,11 @@ MonoBehaviour:
   - SpawnDelay: 7
     Type1Count: 8
     Type2Count: 3
-    Type3Count: 0
+    Type3Count: 1
   - SpawnDelay: 6
     Type1Count: 15
     Type2Count: 4
-    Type3Count: 1
+    Type3Count: 2
   - SpawnDelay: 5
     Type1Count: 20
     Type2Count: 5
@@ -990,6 +990,11 @@ PrefabInstance:
       propertyPath: _worldCenter
       value: 
       objectReference: {fileID: 1786337943}
+    - target: {fileID: 2559134955817270368, guid: ff437015c114e6e41bf7655b08856707,
+        type: 3}
+      propertyPath: _isDrawGizmos
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2559134955817270370, guid: ff437015c114e6e41bf7655b08856707,
         type: 3}
       propertyPath: m_Name
@@ -2139,6 +2144,11 @@ PrefabInstance:
       propertyPath: _worldCenter
       value: 
       objectReference: {fileID: 1786337943}
+    - target: {fileID: 5547501810577657788, guid: f14c7dd5130a90a4795f731026306186,
+        type: 3}
+      propertyPath: _isDrawGizmos
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5547501810577657789, guid: f14c7dd5130a90a4795f731026306186,
         type: 3}
       propertyPath: m_RootOrder

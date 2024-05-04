@@ -11,10 +11,14 @@ public class EnemyType3 : Enemy
     [Space, Header("States")]
     public StraightMoveState StraightMove;
 
+    [Space]
+    [SerializeField] float _lifeSpan = 10f;
+
     new void Start()
     {
         base.Start();
         SelectState();
+        Destroy(gameObject, _lifeSpan);
     }
 
     void Update()

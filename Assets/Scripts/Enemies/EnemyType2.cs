@@ -8,11 +8,15 @@ public class EnemyType2 : Enemy
 
     [Space, Header("States")]
     public SineWaveMoveState SineWaveMove;
+    
+    [Space]
+    [SerializeField] float _lifeSpan = 10f;
 
     new void Start()
     {
         base.Start();
         SelectState();
+        Destroy(gameObject, _lifeSpan);
     }
 
     void Update()

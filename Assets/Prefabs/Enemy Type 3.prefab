@@ -240,6 +240,7 @@ MonoBehaviour:
   Target: {fileID: 0}
   _damage: 1
   StraightMove: {fileID: 1678337469537319734}
+  _lifeSpan: 30
 --- !u!114 &4969355136799979253
 MonoBehaviour:
   m_ObjectHideFlags: 0
