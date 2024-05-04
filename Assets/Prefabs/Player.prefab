@@ -186,6 +186,8 @@ MonoBehaviour:
   _tag: 0
   _core: {fileID: 5040854322868775997}
   IsAttacking: 0
+  _deathEffectPrefab: {fileID: 8322505036580153103, guid: 8eb4758c1670de549a2d66d54d5c3694,
+    type: 3}
   _moveState: {fileID: 5040854324338716629}
   _shootAttackState: {fileID: 5040854324732427397}
   _escapeDashState: {fileID: 3573427293508725964}

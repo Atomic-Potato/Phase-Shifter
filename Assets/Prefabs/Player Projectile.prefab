@@ -53,6 +53,8 @@ MonoBehaviour:
   _damageLayers:
     serializedVersion: 2
     m_Bits: 512
+  _deathEffectPrefab: {fileID: 3115819467365596926, guid: 613236cf55de79340aafc18ab4faac5a,
+    type: 3}
   _isDrawGizmos: 1
 --- !u!50 &4423798156908553018
 Rigidbody2D:

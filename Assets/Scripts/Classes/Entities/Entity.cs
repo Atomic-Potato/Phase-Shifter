@@ -31,6 +31,9 @@ public abstract class Entity : MonoBehaviour, IDamageable, IHealable
     [HideInInspector] public bool IsAttacking;
     public bool IsRecovering {get; protected set;}
 
+    [SerializeField] GameObject _deathEffectPrefab;
+
+
     void OnDrawGizmos()
     {
 #if UNITY_EDITOR
@@ -111,6 +114,7 @@ public abstract class Entity : MonoBehaviour, IDamageable, IHealable
     
     public virtual void Die()
     {
+        Instantiate(_deathEffectPrefab, transform.position, Quaternion.identity);
         IsAlive = false;
     }
 

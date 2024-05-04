@@ -12,6 +12,7 @@ public class Projectile : MonoBehaviour
     [Space]
     [SerializeField] Rigidbody2D _rigidbody;
     [SerializeField] LayerMask _damageLayers;
+    [SerializeField] GameObject _deathEffectPrefab;
 
     [Space, Header("Gizmos")]
     [SerializeField] bool _isDrawGizmos;
@@ -48,6 +49,7 @@ public class Projectile : MonoBehaviour
             if (target != null)
             {
                 target.Damage(_damage);
+                Instantiate(_deathEffectPrefab, transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
         }

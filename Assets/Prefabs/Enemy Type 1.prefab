@@ -218,6 +218,8 @@ MonoBehaviour:
   _tag: 1
   _core: {fileID: 8759558310093627974}
   IsAttacking: 0
+  _deathEffectPrefab: {fileID: 8322505036580153103, guid: 8eb4758c1670de549a2d66d54d5c3694,
+    type: 3}
   Target: {fileID: 0}
   _damage: 1
   _followTarget: {fileID: 3038846717462441858}

@@ -743,7 +743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6a30659a72f2e44ab36152c0ae7eb70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _roundLengthInSeconds: 30
+  _roundLengthInSeconds: 120
   _waves:
   - SpawnDelay: 8
     Type1Count: 10
