@@ -20,7 +20,15 @@ public class MatchUIManager : Singleton<MatchUIManager>
 
         Player.Instance.DeathBroadcaster.AddListener(ShowRestartScreen);
         Player.Instance.HitpointsUpdateBroadcaster.AddListener(UpdateHitpoints);
+        GameManager.Instance.GamePausedBroadcaster.AddListener(HideShowPauseMenu);
+        GameManager.Instance.GameUnPausedBroadcaster.AddListener(HideShowPauseMenu);
         UpdateHitpoints();
+    }
+
+    public void HideShowPauseMenu()
+    {
+        _pauseMenu.SetActive(!_pauseMenu.activeSelf);
+        _gameUI.SetActive(!_gameUI.activeSelf);
     }
 
     public void UpdateHitpoints()
