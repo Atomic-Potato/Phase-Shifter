@@ -32,6 +32,7 @@ public abstract class Entity : MonoBehaviour, IDamageable, IHealable
     public bool IsRecovering {get; protected set;}
 
     [SerializeField] GameObject _deathEffectPrefab;
+    [SerializeField] SoundManager.Sound _deathSound;
 
 
     void OnDrawGizmos()
@@ -115,6 +116,7 @@ public abstract class Entity : MonoBehaviour, IDamageable, IHealable
     public virtual void Die()
     {
         Instantiate(_deathEffectPrefab, transform.position, Quaternion.identity);
+        SoundManager.Instance.PlaySoundAtPosition(transform.position, _deathSound, true);
         IsAlive = false;
     }
 

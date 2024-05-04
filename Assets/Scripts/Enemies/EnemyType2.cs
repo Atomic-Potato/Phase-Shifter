@@ -36,7 +36,7 @@ public class EnemyType2 : Enemy
         if (other.gameObject.tag == TagsManager.Tag.Main_Player.ToString())
         {
             other.gameObject.GetComponent<Entity>().Damage(_damage);
-            Destroy(gameObject);
+            Die();
         }
     }
 

@@ -77,6 +77,7 @@ public class EscapeDash : EntityState
             Core.transform.position += (Vector3)_direction * (distanceToHitPoint - EntitySize);
         }
         _trail.SpawnTrail(Core.transform.position, originalPosition);
+        SoundManager.Instance.PlaySoundAtPosition(transform.position, SoundManager.Sound.Swoosh, true);
         Exit();
     }
 

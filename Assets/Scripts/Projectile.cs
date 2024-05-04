@@ -50,6 +50,7 @@ public class Projectile : MonoBehaviour
             {
                 target.Damage(_damage);
                 Instantiate(_deathEffectPrefab, transform.position, Quaternion.identity);
+                SoundManager.Instance.PlaySoundAtPosition(transform.position, SoundManager.Sound.Impact, true);
                 Destroy(gameObject);
             }
         }

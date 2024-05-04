@@ -12,6 +12,8 @@ public class ShootAttackState : EntityState
     [SerializeField] MoveState _moveState;
     [SerializeField] LookAtTargetState _lookAtTargetState;
 
+    [Space]
+    [SerializeField] SoundManager.Sound _sound;
     public override void Enter()
     {
         SetState(_moveState, true);
@@ -28,6 +30,7 @@ public class ShootAttackState : EntityState
             projectile.transform.rotation = Quaternion.Euler(0f, 0f, angleDegrees);
         }
         projectile.Launch();
+        SoundManager.Instance.PlaySoundAtPosition(transform.position, _sound, true);
         Delay();
     }
 

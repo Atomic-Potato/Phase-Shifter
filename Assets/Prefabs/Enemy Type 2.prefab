@@ -248,6 +248,7 @@ MonoBehaviour:
   IsAttacking: 0
   _deathEffectPrefab: {fileID: 8322505036580153103, guid: 8eb4758c1670de549a2d66d54d5c3694,
     type: 3}
+  _deathSound: 3
   Target: {fileID: 0}
   _damage: 1
   SineWaveMove: {fileID: 423385410820985072}
@@ -401,6 +402,7 @@ MonoBehaviour:
   ShootingTip: {fileID: 7119288668964089580}
   _moveState: {fileID: 0}
   _lookAtTargetState: {fileID: 7119288669141171983}
+  _sound: 1
 --- !u!1 &7119288669141171981
 GameObject:
   m_ObjectHideFlags: 0

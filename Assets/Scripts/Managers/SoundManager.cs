@@ -10,16 +10,39 @@ public class SoundManager : Singleton<SoundManager>
     [SerializeField, Min(0f)] Vector2 _randomPitchRange = new Vector2(0.5f, 1f); 
 
     [Space, Header("Clips")]
-    [SerializeField] SoundClip _gunCock;
+    [SerializeField] SoundClip _shoot1;
+    [SerializeField] SoundClip _shoot2;
+    [SerializeField] SoundClip _swoosh;
+    [SerializeField] SoundClip _explode;
+    [SerializeField] SoundClip _impact;
+    [SerializeField] SoundClip _damaged;
 
     public enum Sound
     {
+        Shoot1,
+        Shoot2,
+        Swoosh,
+        Explode,
+        Impact,
+        Damaged,
     }
 
     ISoundEffectClip GetSoundEffectClip(Sound sound)
     {
         switch (sound)
         {
+            case Sound.Shoot1:
+                return _shoot1;
+            case Sound.Shoot2:
+                return _shoot2;
+            case Sound.Swoosh:
+                return _swoosh;
+            case Sound.Explode:
+                return _explode;
+            case Sound.Impact:
+                return _impact;
+            case Sound.Damaged:
+                return _damaged;
         }
 
         return null;

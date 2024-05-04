@@ -54,6 +54,12 @@ public class Player : SingletonEntity<Player>
             SetState(_moveState);
         }
     }
+
+    public override void Damage(int damage)
+    {
+        base.Damage(damage);
+        SoundManager.Instance.PlaySoundAtPosition(transform.position, SoundManager.Sound.Damaged);
+    }
     #endregion
 
     public override void Die()
