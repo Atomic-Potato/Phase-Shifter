@@ -13,6 +13,8 @@ public class Player : SingletonEntity<Player>
 
     [HideInInspector] public UnityEvent HitpointsUpdateBroadcaster; 
     [HideInInspector] public UnityEvent DeathBroadcaster;
+    
+    public bool IsActive = false;
     #endregion
 
     #region Execution
@@ -41,6 +43,8 @@ public class Player : SingletonEntity<Player>
 
     protected override void SelectState()
     {
+        if (!IsActive)
+            return;
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             SetState(_shootAttackState);

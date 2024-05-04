@@ -26,10 +26,12 @@ public class EnemiesManager : Singleton<EnemiesManager>
     public int CurrentWave { get; private set; }
     float _timeBetweenWaves;
 
+    public UnityEvent NoEnemiesLeftBroadcaster;
     UnityEvent _lasWaveBroadcaster;
 
     bool _isStopSpawning;
     int _spawnerIndex;
+    bool _isNoEnemiesLeft;
 
     enum Types
     {
@@ -57,6 +59,11 @@ public class EnemiesManager : Singleton<EnemiesManager>
     {
         if (!_isStopSpawning)
             SpawnWave();
+        if (Enemies.Count == 0 && !_isNoEnemiesLeft && _isStopSpawning)
+        {
+            _isNoEnemiesLeft = true;
+            NoEnemiesLeftBroadcaster.Invoke();
+        }
     }
 
     Coroutine _spawnCoroutine;

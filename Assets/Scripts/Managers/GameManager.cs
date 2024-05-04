@@ -5,6 +5,7 @@ public class GameManager : Singleton<GameManager>
 {
     public UnityEvent GamePausedBroadcaster;
     public UnityEvent GameUnPausedBroadcaster;
+    public UnityEvent GameEndBroadcaster;
 
     float _timeScaleCache;
 
@@ -13,6 +14,12 @@ public class GameManager : Singleton<GameManager>
         base.Awake();
         GamePausedBroadcaster = new UnityEvent();
         GameUnPausedBroadcaster = new UnityEvent();
+        GameEndBroadcaster = new UnityEvent();
+    }
+
+    void Start()
+    {
+        EnemiesManager.Instance.NoEnemiesLeftBroadcaster.AddListener(() => GameEndBroadcaster.Invoke());
     }
 
     void Update()
@@ -48,6 +55,11 @@ public class GameManager : Singleton<GameManager>
     public void ReloadCurrentScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void LoadStartScene()
+    {
+        SceneManager.LoadScene("Start");
     }
 
     public void ExitApplication()

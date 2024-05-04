@@ -7,6 +7,7 @@ public class MatchUIManager : Singleton<MatchUIManager>
     [SerializeField] GameObject _gameUI;
     [SerializeField] GameObject _restartMenu;
     [SerializeField] GameObject _pauseMenu;
+    [SerializeField] GameObject _endMenu;
 
     [Space]
     [SerializeField] Transform _healthIconsParent;
@@ -22,7 +23,15 @@ public class MatchUIManager : Singleton<MatchUIManager>
         Player.Instance.HitpointsUpdateBroadcaster.AddListener(UpdateHitpoints);
         GameManager.Instance.GamePausedBroadcaster.AddListener(HideShowPauseMenu);
         GameManager.Instance.GameUnPausedBroadcaster.AddListener(HideShowPauseMenu);
+        GameManager.Instance.GameEndBroadcaster.AddListener(HideShowEndScreen);
         UpdateHitpoints();
+    }
+
+    public void HideShowEndScreen()
+    {
+        _endMenu.SetActive(!_endMenu.activeSelf);
+        _gameUI.SetActive(!_gameUI.activeSelf);
+        Time.timeScale = 0;
     }
 
     public void HideShowPauseMenu()
