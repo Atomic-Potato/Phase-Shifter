@@ -1,4 +1,5 @@
-﻿using Enemies;
+﻿using System.Collections;
+using Enemies;
 using UnityEngine;
 
 public class EnemyType2 : Enemy
@@ -16,7 +17,14 @@ public class EnemyType2 : Enemy
     {
         base.Start();
         SelectState();
-        Destroy(gameObject, _lifeSpan);
+        StartCoroutine(DelayedDeath());
+    }
+
+    IEnumerator DelayedDeath()
+    {
+        yield return new WaitForSeconds(_lifeSpan);
+        if (IsAlive)
+            Die();
     }
 
     void Update()

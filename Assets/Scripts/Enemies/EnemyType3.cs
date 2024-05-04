@@ -17,6 +17,7 @@ public class EnemyType3 : Enemy
         base.Start();
         SelectState();
         Destroy(gameObject, _lifeSpan);
+        EnemiesManager.Instance.Enemies.Remove(this);
     }
 
     void Update()
