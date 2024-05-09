@@ -1,0 +1,36 @@
+# PLAYER
+	- (OPTIONAL) implement weapon heating
+
+# Systems
+	- Random health pickups
+	- SCORE NIGGGAAAA
+	- Pause menu
+# ENEMIES
+	## BOSS FIGHT:
+	- radial lazers
+	- and shoots 3 large projectiles at the player, 
+	each one delayed by a bit from the other
+	- before each attack do a flashing animation to show an attack is about to start
+	- spawn enemies between each attack
+
+# GFX
+						REMOVE ASEPRITE FILES BEFORE YOUR SEND THE PROJECT
+	- flash type 1 when hit
+	## Entities :
+	- Boss idle
+		- lazer flash
+		- shooting flash
+
+# GUI
+	- wave timer
+	- boss healthbar
+
+# SOUND:
+
+	# Music
+	- boss fight
+# OTHER
+	- Second level waifu showcasing the boss
+		- level starts
+			- level ends and waifu congrats player
+	- 20 second trailer
